@@ -3,15 +3,21 @@ package com.codepath.flixster.modules;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcel;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Parcel
 public class Movie {
+    //needed by Parceler library
+    public Movie(){}
     public String overview;
     public String title;
     public String poster;
+    public double vote_average;
     public Movie(JSONObject jsonObject) throws JSONException {
+        vote_average=jsonObject.getDouble("vote_average");
        overview = jsonObject.getString("overview");
        title = jsonObject.getString("title");
        poster=jsonObject.getString("poster_path");
@@ -23,6 +29,10 @@ public class Movie {
             movies.add(new Movie(moviesFromArray.getJSONObject(i)));
         }
         return movies;
+    }
+
+    public double getVote_average() {
+        return vote_average;
     }
 
     public String getOverview() {

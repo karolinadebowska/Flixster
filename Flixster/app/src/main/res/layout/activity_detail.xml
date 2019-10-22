@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foregroundTint="#F7F2F2"
+    tools:context=".DetailActivity">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="30sp"
+        tools:text="IT" />
+
+    <RatingBar
+        android:id="@+id/rbVote"
+        style="@android:style/Widget.DeviceDefault.Light.RatingBar.Indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvTitle"
+        android:layout_marginTop="0dp"
+        android:layout_weight="1"
+        android:background="#0A0A0A"
+        android:foregroundTint="#F3E9E9"
+        android:indeterminateTint="#F1E9E9"
+        android:isIndicator="true"
+        android:numStars="10"
+        android:progressBackgroundTint="#F8F3F3"
+        android:progressTint="#F7F3F3"
+        android:rating="6.0"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/tvOverivew"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rbVote"
+        android:layout_marginTop="0dp"
+        tools:text="myOverview starts here" />
+</RelativeLayout>

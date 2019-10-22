@@ -9,8 +9,10 @@ import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 import com.codepath.flixster.adapters.MovieAdapter;
 import com.codepath.flixster.modules.Movie;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -48,16 +50,12 @@ public class MainActivity extends AppCompatActivity {
             public void onSuccess(int statusCode, Headers headers, JSON json) {
                 Log.e(TAG,"on success");
                 //create JSON object ?
-                JSONObject jsonObject = json.jsonObject;
+                final JSONObject jsonObject = json.jsonObject;
                 try {
                     JSONArray results = jsonObject.getJSONArray("results");
                     Log.i("results : ",results.toString());
                     movies.addAll(Movie.fromJsonArray(results));
                     myAdapter.notifyDataSetChanged();
-                    for (int i = 0;i<movies.size();i++){
-                        Log.i("movies",movies.get(i).getTitle());
-                    }
-                    Log.i("movies : ",movies.toString());
                 } catch (JSONException e) {
                     Log.e(TAG,"Json exception",e);
                 }

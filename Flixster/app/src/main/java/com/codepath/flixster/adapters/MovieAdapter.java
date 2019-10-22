@@ -1,20 +1,26 @@
 package com.codepath.flixster.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
+import com.codepath.flixster.DetailActivity;
 import com.codepath.flixster.MainActivity;
 import com.codepath.flixster.R;
 import com.codepath.flixster.modules.Movie;
+
+import org.apache.commons.cli.Parser;
+import org.parceler.Parcels;
 
 import java.net.URL;
 import java.util.List;
@@ -45,9 +51,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
     //populate the data in a ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-       holder.getTitle().setText(movies.get(position).getTitle());
-       holder.getOverView().setText(movies.get(position).getOverview());
-       Glide.with(context).load(movies.get(position).getPoster()).into(holder.getPoster());
+        Movie movie = movies.get(position);
+        holder.bind(movie);
     }
 
     //returns the total number of items in adapter
@@ -61,12 +66,15 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
         TextView title;
         TextView overView;
         ImageView poster;
+        RecyclerView container;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.title);
             overView = itemView.findViewById(R.id.overView);
             poster = itemView.findViewById(R.id.poster);
+            container=itemView.findViewById(R.id.container);
         }
 
         public TextView getTitle() {
@@ -79,6 +87,23 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
 
         public ImageView getPoster() {
             return poster;
+        }
+
+        public void bind(final Movie movie){
+            title.setText(movie.getTitle());
+            overView.setText(movie.getOverview());
+
+            Glide.with(context).load(movie.getPoster()).into(poster);
+            // final String popularity = jsonObject.getString("popularity");
+            container.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context,"clicked",Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(context,DetailActivity.class);
+                    i.putExtra("movie", Parcels.wrap(movie));
+                    context.startActivity(i);
+                }
+            });
         }
     }
 }
