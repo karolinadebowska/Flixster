@@ -21,13 +21,16 @@ Flix is an app that allows users to browse movies from the [The Movie Database A
 
 ### App Walkthough GIF
 
-emulator is not working, reached for help, issue hasn't been solved
+emulator is not working, reached for help, issue hasn't been solved. 
 
 <img src="YOUR_GIF_URL_HERE" width=250><br>
 
 ### Notes
 
-emulatos
+emulator. I tried everything: Disable Instant Run
+Clear the Project Caches
+Uninstall and re-install the application
+Restart your emulator or device - This can fix certain issues especially if the emulator has lost internet
 
 ## Open-source libraries used
 - [Android Async HTTP](https://github.com/codepath/CPAsyncHttpClient) - Simple asynchronous HTTP requests with JSON parsing
