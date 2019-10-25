@@ -12,11 +12,14 @@ import java.util.List;
 public class Movie {
     //needed by Parceler library
     public Movie(){}
+    public int movieId;
     public String overview;
     public String title;
     public String poster;
     public double vote_average;
+
     public Movie(JSONObject jsonObject) throws JSONException {
+        movieId = jsonObject.getInt("id");
         vote_average=jsonObject.getDouble("vote_average");
        overview = jsonObject.getString("overview");
        title = jsonObject.getString("title");
@@ -46,5 +49,8 @@ public class Movie {
     //%s means - replace that with second parameter
     public String getPoster() {
         return String.format("https://image.tmdb.org/t/p/w342/%s",poster);
+    }
+    public int getMovieId() {
+        return movieId;
     }
 }

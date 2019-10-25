@@ -1,26 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearlayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:foregroundTint="#F7F2F2"
+    android:background="#00090808"
+    android:orientation="vertical"
     tools:context=".DetailActivity">
 
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:textSize="30sp"
         tools:text="IT" />
+
+    <com.google.android.youtube.player.YouTubePlayerView
+        android:id="@+id/player"
+        android:layout_width="match_parent"
+        android:layout_height="250dp" />
 
     <RatingBar
         android:id="@+id/rbVote"
         style="@android:style/Widget.DeviceDefault.Light.RatingBar.Indicator"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvTitle"
         android:layout_marginTop="0dp"
         android:layout_weight="1"
         android:background="#0A0A0A"
@@ -37,7 +41,7 @@
         android:id="@+id/tvOverivew"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/rbVote"
         android:layout_marginTop="0dp"
+        android:textSize="18sp"
         tools:text="myOverview starts here" />
-</RelativeLayout>
+</LinearLayout>
