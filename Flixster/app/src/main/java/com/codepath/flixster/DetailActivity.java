@@ -27,17 +27,21 @@ public class DetailActivity extends YouTubeBaseActivity {
     public final String YOUTUBE_API = "AIzaSyC7NwdvVjtN4O8oZNah7k3UR9m-oftEanM";
     //%d interesting
     public final String YOUTUBE_LINK = "https://api.themoviedb.org/3/movie/%d/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
-
-    TextView tvtitle = findViewById(R.id.tvTitle);
-    TextView tvOverview = findViewById(R.id.tvOverivew);
-    RatingBar ratingBar = findViewById(R.id.rbVote);
-
-    YouTubePlayerView youTubePlayerView = (YouTubePlayerView)findViewById(R.id.player);
-
+    TextView tvtitle;
+    TextView tvOverview;
+    RatingBar ratingBar;
+    YouTubePlayerView youTubePlayerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+        tvtitle = findViewById(R.id.tvTitle);
+        tvOverview = findViewById(R.id.tvOverivew);
+        ratingBar = findViewById(R.id.rbVote);
+
+        youTubePlayerView = (YouTubePlayerView)findViewById(R.id.player);
+
         Movie movie = Parcels.unwrap(getIntent().getParcelableExtra("movie"));
         tvtitle.setText(movie.getTitle());
         tvOverview.setText(movie.getOverview());
